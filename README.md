@@ -29,17 +29,7 @@ e)Company logos
 
 **App Structure**
 1.Architecture
-- It follows MVVM (Model-View-ViewModel) architecture pattern:
-app/src/main/java/com/example/stockscreener/
-├── data/
-│   ├── model/              # Data classes (Stock, StockPrice, Price)
-│   ├── repository/         # Data management and business logic
-│   └── local/              # Local data source (JSON file parsing)
-├── ui/
-│   ├── adapter/            # RecyclerView adapter for stock list
-│   ├── viewmodel/          # ViewModel and ViewModelFactory
-│   └── MainActivity.kt     # Main UI controller
-└── assets/stocks.json      # Stock data source
+- It follows MVVM (Model-View-ViewModel) architecture pattern
 
 2.Key Components
 a)Data Layer
