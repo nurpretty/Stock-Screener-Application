@@ -39,9 +39,6 @@ class StockAdapter(
         val stock = stocks[position]
         val context = holder.itemView.context
 
-        // Debug logging
-        Log.d("StockAdapter", "Stock: ${stock.symbol}, Change: ${stock.stockPrice.priceChange}")
-
         // Set text data
         holder.symbolTextView.text = stock.symbol
         holder.nameTextView.text = stock.name
@@ -52,10 +49,10 @@ class StockAdapter(
         val percentChange = stock.stockPrice.percentageChange
         holder.changeTextView.text = String.format("%.2f (%.2f%%)", change, percentChange)
 
-        // FIXED: Correct trend icon and color logic
+
         when {
             change > 0 -> {
-                // Positive change - GREEN and UP arrow
+                // Positive change
                 holder.changeTextView.setTextColor(ContextCompat.getColor(context, R.color.stock_positive))
                 holder.priceTextView.setBackgroundColor(ContextCompat.getColor(context, R.color.stock_positive_background))
                 holder.trendImageView.setImageResource(R.drawable.ic_trending_up)
@@ -63,7 +60,7 @@ class StockAdapter(
                 Log.d("StockAdapter", "${stock.symbol}: UP trend")
             }
             change < 0 -> {
-                // Negative change - RED and DOWN arrow
+                // Negative change
                 holder.changeTextView.setTextColor(ContextCompat.getColor(context, R.color.stock_negative))
                 holder.priceTextView.setBackgroundColor(ContextCompat.getColor(context, R.color.stock_negative_background))
                 holder.trendImageView.setImageResource(R.drawable.ic_trending_down)
@@ -71,10 +68,10 @@ class StockAdapter(
                 Log.d("StockAdapter", "${stock.symbol}: DOWN trend")
             }
             else -> {
-                // No change - GRAY and FLAT arrow (or hide the arrow)
+
                 holder.changeTextView.setTextColor(ContextCompat.getColor(context, R.color.stock_neutral))
                 holder.priceTextView.setBackgroundColor(ContextCompat.getColor(context, R.color.md_theme_light_surfaceVariant))
-                holder.trendImageView.setImageResource(R.drawable.ic_trending_flat) // NEW: flat arrow
+                holder.trendImageView.setImageResource(R.drawable.ic_trending_flat)
                 holder.trendImageView.setColorFilter(ContextCompat.getColor(context, R.color.stock_neutral))
                 Log.d("StockAdapter", "${stock.symbol}: FLAT trend")
             }
